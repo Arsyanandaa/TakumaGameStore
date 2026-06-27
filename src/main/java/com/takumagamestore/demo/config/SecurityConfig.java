@@ -14,13 +14,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // Disable CSRF karena ini REST API Stateless
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Matikan Session Cookie
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll() // Bebaskan endpoint login lo dari interceptor
-                .anyRequest().authenticated()
-            );
-            
+                .csrf(csrf -> csrf.disable()) // Disable CSRF karena ini REST API Stateless
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Matikan
+                                                                                                              // Session
+                                                                                                              // Cookie
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/categories/**").permitAll()
+                        .requestMatchers("/api/products/**").permitAll()
+                        .anyRequest().authenticated());
+
         return http.build();
     }
 }

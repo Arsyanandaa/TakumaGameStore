@@ -32,13 +32,13 @@ public class Transaction {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @Column(name = "target_id", nullable = false, length = 50)
+    private String gameUserId;
+
     // Relasi ke tabel products (item apa yang dibeli)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
-
-    @Column(name = "target_id", nullable = false, length = 50)
-    private String targetId;
 
     @Column(name = "zone_id", length = 20)
     private String zoneId; // Zone ID Game (contoh: 2123, biasanya buat ML)

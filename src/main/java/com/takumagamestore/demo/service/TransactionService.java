@@ -40,13 +40,15 @@ public class TransactionService {
     Transaction transaction = new Transaction();
     transaction.setUser(user);
     transaction.setProduct(product);
-    transaction.setTargetId(dto.getTargetId());
+    transaction.setGameUserId(dto.getGameUserId());
     transaction.setZoneId(dto.getZoneId());
     transaction.setPaymentMethod(dto.getPaymentMethod());
     transaction.setTotalPrice(product.getPrice()); 
     transaction.setStatus("PENDING");
     transaction.setCreatedAt(LocalDateTime.now());
     transaction.setUpdatedAt(LocalDateTime.now());
+    transaction.setGameUserId(dto.getGameUserId()); 
+    transaction.setZoneId(dto.getZoneId());
 
     // 4. LOGIC QRIS SIMULATOR GRATISAN
     // Kalau user milih QRIS, kita kasih gambar QRIS dummy/testing biar di-render frontend

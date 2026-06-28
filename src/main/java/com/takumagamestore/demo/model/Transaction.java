@@ -64,6 +64,11 @@ public class Transaction {
     @Column(name = "qr_code_url", length = 500)
     private String qrCodeUrl; //
 
+    @Column(name = "snap_token")
+    private String snapToken;
+
     @Column(name = "order_id")
     private String orderId;
+
+    
 }
